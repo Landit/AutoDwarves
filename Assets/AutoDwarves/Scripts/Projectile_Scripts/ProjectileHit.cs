@@ -38,12 +38,20 @@ public class ProjectileHit : MonoBehaviour {
             Quaternion.Euler(0, 0, 90)
         );
 
-        SwitchCameraFocus(lemming);
+        AddComponentsToGameObject(lemming);
+        SwitchCameraFocusOn(lemming);
+
         Destroy(gameObject); //kill off current projectile (only used for animation)
 
     }
 
-    void SwitchCameraFocus(GameObject gameObject) //switch camera follow to the new lemming object
+    void AddComponentsToGameObject(GameObject gameObject)
+    {
+        var lemmingMoveScript = gameObject.AddComponent<LemmingMove>();
+        lemmingMoveScript.Speed = 5;
+    }
+
+    void SwitchCameraFocusOn(GameObject gameObject) //switch camera follow to the new lemming object
     {
         var followScript = Camera.main.GetComponent<ProjectileFollow>();
         followScript.projectile = gameObject.transform;
