@@ -3,11 +3,10 @@ using System.Collections;
 
 public class ProjectileHit : MonoBehaviour {
 
-    private GameObject plankSprite;
     // Use this for initialization
 	void Start () {
-        plankSprite = GameObject.Find("PlankSprite");
-	}
+        
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -33,12 +32,12 @@ public class ProjectileHit : MonoBehaviour {
     {
         Debug.Log("Transforming into lemming");
         GameObject lemming = (GameObject)Instantiate(
-            plankSprite,
+            Resources.Load("Prefabs/Lemming_Miner"),
             new Vector3(transform.position.x, transform.position.y), 
-            Quaternion.Euler(0, 0, 90)
+            Quaternion.Euler(0, 0, 0)
         );
 
-        AddComponentsToGameObject(lemming);
+        //AddComponentsToGameObject(lemming);
         SwitchCameraFocusOn(lemming);
 
         Destroy(gameObject); //kill off current projectile (only used for animation)

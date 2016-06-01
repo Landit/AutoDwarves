@@ -34,8 +34,9 @@ public class Resetter : MonoBehaviour {
 	
 	void OnTriggerExit2D (Collider2D other) {
 		//	If the projectile leaves the Collider2D boundary...
-		if (other.GetComponent<Rigidbody2D>() == projectile) {
-			//	... call the Reset() function
+		if (other.gameObject.tag == "Lemming" || other.gameObject.tag == "Damager") {
+            //	... call the Reset() function
+            Debug.Log("Resetting - OnTriggerExit2D" + other.gameObject.tag);
 			Reset ();
 		}
 	}
